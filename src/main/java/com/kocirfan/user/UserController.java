@@ -1,7 +1,9 @@
 package com.kocirfan.user;
 
+import com.kocirfan.shared.GenericResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,12 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     // Logger ile loglarımı daha iyi yönetiyorum üstelik dosyaya yazma vb gibi işlemler için kullanabilirim.
-    private static final Logger log = LoggerFactory.getLogger(UserController.class);
+    //private static final Logger log = LoggerFactory.getLogger(UserController.class);
+
+    @Autowired
+    UserService userService;
 
     //dinleme yaparken aynı zamanda versiyon vererek projenin eski/eski-olacak versiyonlarınıda canlı tutmayı sağlıyorum.
 
     @PostMapping("/api/1.0/users")
-    public void createUser(@RequestBody User user){
-        log.info(user.toString());
+    public GenericResponse createUser(@RequestBody User user){
+        userService.save(user);
+        return new GenericResponse("user created");
+
+        //log.info(user.toString());
     }
 }
