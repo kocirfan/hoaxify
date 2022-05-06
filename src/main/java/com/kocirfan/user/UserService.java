@@ -14,9 +14,9 @@ public class UserService {
     PasswordEncoder passwordEncoder;
 
     //@Autowired ==> bir classta sadece bir parametre alan constructor varsa bu anatasyona gerek yok
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void save(User user) {

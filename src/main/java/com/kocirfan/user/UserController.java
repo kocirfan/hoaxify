@@ -1,12 +1,9 @@
 package com.kocirfan.user;
 
 import com.kocirfan.shared.GenericResponse;
-import error.ApiError;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.kocirfan.error.ApiError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -33,15 +30,15 @@ public class UserController {
         //log.info(user.toString());
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiError handleValidationException(MethodArgumentNotValidException exception){
-        ApiError error = new ApiError(400, "Validation error", "/api/1.0/users");
-        Map<String, String> validationErrors = new HashMap<>();
-        for(FieldError fieldError: exception.getBindingResult().getFieldErrors()){
-            validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
-        }
-        error.setValidationErrors(validationErrors);
-        return error;
-    }
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    public ApiError handleValidationException(MethodArgumentNotValidException exception){
+//        ApiError error = new ApiError(400, "Validation error", "/api/1.0/users");
+//        Map<String, String> validationErrors = new HashMap<>();
+//        for(FieldError fieldError: exception.getBindingResult().getFieldErrors()){
+//            validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
+//        }
+//        error.setValidationErrors(validationErrors);
+//        return error;
+//    }
 }
