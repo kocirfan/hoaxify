@@ -5,6 +5,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -23,5 +25,9 @@ public class UserService {
         // user ın password'u passwordEncoder'ın encode metodu ile set edildi
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+    }
+
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
 }
