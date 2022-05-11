@@ -2,18 +2,12 @@ package com.kocirfan.user;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.kocirfan.shared.GenericResponse;
-import com.kocirfan.error.ApiError;
 import com.kocirfan.shared.Views;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 public class UserController {
@@ -33,12 +27,21 @@ public class UserController {
         //log.info(user.toString());
     }
 
+//    @GetMapping("/api/1.0/users")
+//    @JsonView(Views.Base.class)
+//    List<User> getUsers(){
+//        return userService.getUsers();
+//    }
+
+    //Database'den veriyi parça parça almak
     @GetMapping("/api/1.0/users")
-    @JsonView(Views.Base.class)
-    List<User> getUsers(){
-        return userService.getUsers();
+   // @JsonView(Views.Base.class)
+    Page<User> getUsers(Pageable page){
+        return userService.getUsers(page);
     }
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
+
+
+    //    @ExceptionHandler(MethodArgumentNotValidException.class)
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
 //    public ApiError handleValidationException(MethodArgumentNotValidException exception){
 //        ApiError error = new ApiError(400, "Validation error", "/api/1.0/users");

@@ -18,7 +18,7 @@ public class HoaxifyApplication {
     @Bean
     CommandLineRunner createInitialUsers(UserService userService) {
         return (args) -> {
-            for(int i =1; i<=10; i++){
+            for(int i =1; i<=20; i++){
                 User user = new User();
                 user.setUsername("user"+i);
                 user.setDisplayName("display" +i);
