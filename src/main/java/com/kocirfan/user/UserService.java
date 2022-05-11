@@ -34,7 +34,12 @@ public class UserService {
 //    }
 
     //Database'den veriyi parça parça almak
-    public Page<User> getUsers(Pageable page){
-        return userRepository.findAll(page);
+//    public Page<User> getUsers(Pageable page){
+//        return userRepository.findAll(page);
+//    }
+
+    //Projection ile Database'den veriyi çekerken belirlediğimiz fieldlar görünür implementation
+    public Page<UserProjection> getUsers(Pageable page){
+        return userRepository.getAllUsersProjection(page);
     }
 }

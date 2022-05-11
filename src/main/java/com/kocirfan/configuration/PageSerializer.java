@@ -8,27 +8,27 @@ import org.springframework.data.domain.Page;
 
 import java.io.IOException;
 
-@JsonComponent
-public class PageSerializer extends JsonSerializer<Page<?>> {
+//@JsonComponent
+//public class PageSerializer extends JsonSerializer<Page<?>> {
 
     //JsonView yönetimi
 
-    @Override
-    public void serialize(Page<?> value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-
-        gen.writeStartObject();
-        gen.writeFieldName("content");
-        serializers.defaultSerializeValue(value.getContent(), gen);
-        gen.writeObjectField("pageable", value.getPageable());
-        gen.writeBooleanField("last", value.isLast());
-        gen.writeNumberField("totalPages", value.getTotalPages());
-        gen.writeNumberField("totalElement", value.getTotalElements());
-        gen.writeNumberField("size", value.getSize());
-        gen.writeNumberField("number", value.getNumber());
-        gen.writeObjectField("sort", value.getSort());
-        gen.writeNumberField("numberOfElements", value.getTotalElements());
-        gen.writeBooleanField("firs", value.isFirst());
-        gen.writeBooleanField("empty", value.isEmpty());
-        gen.writeEndObject();
-    }
-}
+//    @Override
+//    public void serialize(Page<?> value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+//
+//        gen.writeStartObject();
+//        gen.writeFieldName("content");
+//        serializers.defaultSerializeValue(value.getContent(), gen);
+//        gen.writeObjectField("pageable", value.getPageable());
+//        gen.writeBooleanField("last", value.isLast());
+//        gen.writeNumberField("totalPages", value.getTotalPages());
+//        gen.writeNumberField("totalElement", value.getTotalElements());
+//        gen.writeNumberField("size", value.getSize());
+//        gen.writeNumberField("number", value.getNumber());
+//        gen.writeObjectField("sort", value.getSort());
+//        gen.writeNumberField("numberOfElements", value.getTotalElements());
+//        gen.writeBooleanField("firs", value.isFirst());
+//        gen.writeBooleanField("empty", value.isEmpty());
+//        gen.writeEndObject();
+//    }
+//}

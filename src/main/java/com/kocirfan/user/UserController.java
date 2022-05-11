@@ -34,9 +34,15 @@ public class UserController {
 //    }
 
     //Database'den veriyi parça parça almak
+//    @GetMapping("/api/1.0/users")
+//    //@JsonView(Views.Base.class)
+//    Page<User> getUsers(Pageable page){
+//        return userService.getUsers(page);
+//    }
+
+    //Projection ile user ları database'den almak
     @GetMapping("/api/1.0/users")
-    @JsonView(Views.Base.class)
-    Page<User> getUsers(Pageable page){
+    Page<UserProjection> getUsers(Pageable page){
         return userService.getUsers(page);
     }
 
