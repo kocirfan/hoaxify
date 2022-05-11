@@ -2,7 +2,6 @@ package com.kocirfan.user;
 
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.kocirfan.shared.Views;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -27,12 +26,10 @@ public class User implements UserDetails {
     @NotNull(message = "{hoaxify.constraint.username.NotNull.message}")
     @Size(min = 4, max = 255)
     @UniqueUsername
-    @JsonView(Views.Base.class)
     private String username;
 
     @NotNull
     @Size(min = 4, max = 255)
-    @JsonView(Views.Base.class)
     private String displayName;
 
     @NotNull
@@ -40,7 +37,7 @@ public class User implements UserDetails {
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "{hoaxify.constraint.password.Pattern.message}")
     private String password;
 
-    @JsonView(Views.Base.class)
+
     private String image;
 
 

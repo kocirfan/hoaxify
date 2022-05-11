@@ -10,7 +10,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
     //JPQL ile Query yazımı
-    @Query(value = "Select u from User u")
-    Page<UserProjection> getAllUsersProjection(Pageable page);
+//    @Query(value = "Select u from User u")
+//    Page<UserProjection> getAllUsersProjection(Pageable page);
 
 }

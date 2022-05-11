@@ -1,8 +1,7 @@
 package com.kocirfan.user;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import com.kocirfan.shared.GenericResponse;
-import com.kocirfan.shared.Views;
+import com.kocirfan.user.vm.UserVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,12 +40,20 @@ public class UserController {
 //    }
 
     //Projection ile user ları database'den almak
+//    @GetMapping("/api/1.0/users")
+//    Page<UserProjection> getUsers(Pageable page){
+//        return userService.getUsers(page);
+//    }
+
+    // View Model --- DTO
     @GetMapping("/api/1.0/users")
-    Page<UserProjection> getUsers(Pageable page){
-        return userService.getUsers(page);
+    Page<UserVM> getUsers(Pageable page){
+        return userService.getUsers(page).map(UserVM::new);
     }
 
 
+    /** return userService.getUsers(page).map(UserVM::new);
+     burada metot referans ile map edilen obje UserVM'in constructor'ına atanıyor */
     //    @ExceptionHandler(MethodArgumentNotValidException.class)
 //    @ResponseStatus(HttpStatus.BAD_REQUEST)
 //    public ApiError handleValidationException(MethodArgumentNotValidException exception){

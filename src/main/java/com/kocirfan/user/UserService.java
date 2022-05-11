@@ -1,5 +1,6 @@
 package com.kocirfan.user;
 
+import com.kocirfan.user.vm.UserVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,7 +40,12 @@ public class UserService {
 //    }
 
     //Projection ile Database'den veriyi çekerken belirlediğimiz fieldlar görünür implementation
-    public Page<UserProjection> getUsers(Pageable page){
-        return userRepository.getAllUsersProjection(page);
+//    public Page<UserProjection> getUsers(Pageable page){
+//        return userRepository.getAllUsersProjection(page);
+//    }
+
+    //View Model ile Json üretmek ---DTO
+    public Page<User> getUsers(Pageable page){
+        return userRepository.findAll(page);
     }
 }
